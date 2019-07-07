@@ -31,8 +31,8 @@ class HomeController extends Controller
             ->orderBy('created_at','desc')->take(3)->get();
         $allProduct = DB::table('products')
             ->join('list_cat_pros','list_cat_pros.idProduk','=','products.idProduk')
-            ->join('categories','categories.idKategori','=','list_cat_pros.idKategori')
-            ->where('isDeleted','=',false)->get();
+            ->where('isDeleted','=',false)
+            ->join('categories','categories.idKategori','=','list_cat_pros.idKategori')->get();
         $allCategories = categorie::all();
         return view('index', compact('newProduct','allProduct','allCategories'));
     }

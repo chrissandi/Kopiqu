@@ -166,7 +166,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('admin.addProduct')}}" method="post">
+                    <form action="{{route('admin.addProduct')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="idProduct" id="hiddenValue"  value=""/>
                         <div class="form-group row">
@@ -202,8 +202,15 @@
                         <div class="form-group row">
                             <label  class="col-sm-2 col-form-label">Photo</label>
                             <div class="col-sm-8">
-                                <input type="file">
+                                <input type="file" name="image">
                             </div>
+                        </div>
+                        <div class="custom-select" style="width:200px;">
+                            <select name="kategori">
+                                @foreach($categories as $cat)
+                                <option value="{{$cat->idKategori}}">{{$cat->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
 

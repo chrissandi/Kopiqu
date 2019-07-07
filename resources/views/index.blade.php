@@ -214,12 +214,11 @@
                   @csrf
 
               <input type="hidden" name="id" value="{{ $newP->idProduk }}"/>
-              <input type="submit" value="add"/>
               <div class="col-md-3 col-sm-3 col-xs-12">
                   <div class="single-team-member">
                       <div class="team-img">
                           <a href="{{route('user.addToCart')}}">
-                              <img src="storage/product_images/{{$newP->foto}}" alt="">
+                              <img src="storage/{{$newP->foto}}" alt="">
                           </a>
                           <div class="team-social-icon">
                               <a href="{{route('user.addToCart')}}">
@@ -231,6 +230,7 @@
                           <h4>{{$newP->namaP}}</h4>
                           <p>{{$newP->deskripsi}}</p>
                           <p>Rp. {{$newP->harga}}</p>
+                          <input type="submit" value="add"/>
                       </div>
                   </div>
               </div>
@@ -275,13 +275,13 @@
       <div class="awesome-project-content">
         <!-- single-awesome-project start -->
           @foreach($allProduct as $product)
-              <form method="post" action="">
-                  @csrf
-                  <input type="hidden" name="id" value="{{ $product->idProduk }}"/>
-                <div class="col-md-4 col-sm-4 col-xs-12 design {{$product->name}}">
-                  <div class="single-awesome-project">
+              <div class="col-md-4 col-sm-4 col-xs-12 design {{$product->name}}">
+                  <div class="single-awesome-project ">
+                      <form method="post" action="">
+                          @csrf
+                          <input type="hidden" name="id" value="{{ $product->idProduk }}"/>
                     <div class="awesome-img">
-                      <a href="/"><img src="storage/product_images/{{$product->foto}}" alt="" /></a>
+                      <a href="/"><img src="storage/{{$product->foto}}" alt="" /></a>
                         <div class="add-actions team-img text-center">
                             <div class="project-dec">
                                 <a href="/">
@@ -296,9 +296,9 @@
                           <p>Rp. {{$product->harga}}</p>
                           <input type="submit" value="add"/>
                       </div>
+                      </form>
                   </div>
                 </div>
-              </form>
           @endforeach
       </div>
     </div>

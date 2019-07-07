@@ -47,10 +47,10 @@ class DatabaseSeeder extends Seeder
 
 
         /** Product **/
-        $product1 = product::create(['namaP'=>'kopi1','deskripsi'=>'kopi paling mahal di upnormal','stok'=>1000,'harga'=>10000,'berat'=>1,'foto'=>'produk1.jpg']);
-        $product2 = product::create(['namaP'=>'kopi2','deskripsi'=>'kopi paling mahal di starbucks','stok'=>1000,'harga'=>100000,'berat'=>1,'foto'=>'produk2.jpg']);
-        $product3 = product::create(['namaP'=>'kopi3','deskripsi'=>'kopi paling mahal di warkop','stok'=>1000,'harga'=>1000,'berat'=>1,'foto'=>'produk3.jpg']);
-        $product4 = product::create(['namaP'=>'kopi4','deskripsi'=>'kopi paling mahal di rumah','stok'=>1000,'harga'=>100,'berat'=>1,'foto'=>'produk4.jpg']);
+        $product1 = product::create(['namaP'=>'kopi1','deskripsi'=>'kopi paling mahal di upnormal','stok'=>1000,'harga'=>10000,'berat'=>1,'foto'=>'product_images/produk1.jpg']);
+        $product2 = product::create(['namaP'=>'kopi2','deskripsi'=>'kopi paling mahal di starbucks','stok'=>1000,'harga'=>100000,'berat'=>1,'foto'=>'product_images/produk2.jpg']);
+        $product3 = product::create(['namaP'=>'kopi3','deskripsi'=>'kopi paling mahal di warkop','stok'=>1000,'harga'=>1000,'berat'=>1,'foto'=>'product_images/produk3.jpg']);
+        $product4 = product::create(['namaP'=>'kopi4','deskripsi'=>'kopi paling mahal di rumah','stok'=>1000,'harga'=>100,'berat'=>1,'foto'=>'product_images/produk4.jpg']);
 
         /** Order **/
         $order1 = order::create(['idUser'=>$user->id,'idAdmin'=>$admin->id,'nominal'=>120000,'status'=>false]);

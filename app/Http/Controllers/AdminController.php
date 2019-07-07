@@ -19,7 +19,8 @@ class AdminController extends Controller
     {
         $admin =Auth::user();
         $allProduct = DB::table('products')->where('isDeleted','=',false)->get();
-        return view("admin.pages.admin-products", compact('admin' , 'allProduct'));
+        $categories = DB::table('categories')->get();
+        return view("admin.pages.admin-products", compact('admin' , 'allProduct','categories'));
     }
     public function adminOrders()
     {
@@ -43,14 +44,19 @@ class AdminController extends Controller
         return redirect()->back();
     }
     public function addProduct(){
-        $id =\request('idProduct');
         $namaP = \request('namaP');
         $deskripsi = \request('deskripsi');
         $stok = \request('stok');
         $harga = \request('harga');
         $berat = \request('berat');
-        db::table('products')->insert(['namaP'=>$namaP,'deskripsi'=>$deskripsi,
-            'stok'=>$stok,'harga'=>$harga,'berat'=>$berat]);
+        $kategori = \request('kategori');
+        $imagePath = '';
+        if(request('image')){
+            $imagePath = \request('image')->store('product_images','public');
+        }
+        $product1 = product::create(['namaP'=>$namaP,'deskripsi'=>$deskripsi,
+            'stok'=>$stok,'harga'=>$harga,'berat'=>$berat,'foto'=>$imagePath]);
+        listcatpro::create(['idProduk'=>$product1->id,'idKategori'=>$kategori]);
         return redirect()->back();
     }
     public function editProduct()
